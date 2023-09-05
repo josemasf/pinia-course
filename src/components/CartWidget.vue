@@ -22,17 +22,12 @@ const active = ref(false);
       <div v-if="!cartStore.isEmpty">
         <ul class="items-in-cart">
           <CartItem
-            :product="{ name: 'Dried Pineapple', price: 5 }"
-            :count="5"
+          v-for="(item, name) in cartStore.grouped" :key="item.name"
+            :product="item[0]"
+            :count="cartStore.groupCount(name)"
             @updateCount=""
             @clear=""
-          />
-          <CartItem
-            :product="{ name: 'Pineapple Gum', price: 3 }"
-            :count="5"
-            @updateCount=""
-            @clear=""
-          />
+          />         
         </ul>
         <div class="flex justify-end text-2xl mb-5">
           Total: <strong>$40</strong>
@@ -42,7 +37,6 @@ const active = ref(false);
           <AppButton class="primary">Checkout</AppButton>
         </div>
       </div>
-      <!-- Uncomment and use condition to show when cart is empty -->
       <div v-else><em>Cart is Empty</em></div> 
     </AppModalOverlay>
   </div>
