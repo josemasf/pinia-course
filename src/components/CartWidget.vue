@@ -26,11 +26,11 @@ const active = ref(false);
             :product="item[0]"
             :count="cartStore.groupCount(name)"
             @updateCount=""
-            @clear=""
+            @clear="cartStore.removeItem(name)"
           />         
         </ul>
         <div class="flex justify-end text-2xl mb-5">
-          Total: <strong>$40</strong>
+          Total: <strong>{{cartStore.totalPrice}}$</strong>
         </div>
         <div class="flex justify-end">
           <AppButton class="secondary mr-2" @click="cartStore.$reset()">Clear Cart</AppButton>
