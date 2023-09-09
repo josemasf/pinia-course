@@ -12,6 +12,14 @@ const cartStore = useCartStore()
 /*import { storeToRefs } from "pinia";
 const {products} = storeToRefs(useProductStore())*/
 
+cartStore.$onAction(({name,args, after})=>{
+  if(name==="addToCart"){
+    after(()=>{      
+      console.log(args[0], args[1].name)
+    })
+  }
+})
+
 </script>
 
 <template>
