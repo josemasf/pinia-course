@@ -1,6 +1,8 @@
 <script setup>
 // imports
 import CartWidget from './CartWidget.vue';
+import { useAuthStore } from "@/stores/";
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -9,6 +11,7 @@ import CartWidget from './CartWidget.vue';
     style="background-image: url('/images/double-bubble-outline.png')"
   >
     <h1 class="text-4xl text-gray-700 font-bold">The Pineapple Stand</h1>
+    {{ authStore.username }}
     <CartWidget/>
   </header>
 </template>

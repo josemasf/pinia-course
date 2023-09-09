@@ -3,6 +3,8 @@ import { groupBy } from "lodash";
 import { useAuthStore } from "./AuthStore";
 
 export const useCartStore = defineStore('CartStore',{
+    //habilitar el plugin undo/redo solo en este store
+    historyEnabled: true,
     state:()=>{
     return{
         items: []
