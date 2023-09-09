@@ -33,7 +33,7 @@ const active = ref(false);
           Total: <strong>{{cartStore.totalPrice}}$</strong>
         </div>
         <div class="flex justify-end">
-          <AppButton class="secondary mr-2" @click="cartStore.$reset()">Clear Cart</AppButton>
+          <AppButton class="secondary mr-2" @click="cartStore.clear()">Clear Cart</AppButton>
           <AppButton class="primary" @click="cartStore.checkout()">Checkout</AppButton>
         </div>
       </div>

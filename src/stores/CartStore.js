@@ -1,13 +1,14 @@
 import { acceptHMRUpdate, defineStore } from "pinia";
 import { groupBy } from "lodash";
 import { useAuthStore } from "./AuthStore";
+import { useLocalStorage } from "@vueuse/core";
 
 export const useCartStore = defineStore('CartStore',{
     //habilitar el plugin undo/redo solo en este store
     historyEnabled: true,
     state:()=>{
     return{
-        items: []
+        items: useLocalStorage("CartStore:items",[])
         }
     },
     getters:{
@@ -45,6 +46,9 @@ export const useCartStore = defineStore('CartStore',{
         checkout(){
             const authStore = useAuthStore()
             alert(`${authStore.username} ha comprado ${this.count} items con un total de ${this.totalPrice}` )
+        },
+        clear(){
+            this.items = []
         }
     }
 })
